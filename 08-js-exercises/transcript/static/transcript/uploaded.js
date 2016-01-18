@@ -22,11 +22,21 @@ $(document).ready(function() {
            if (semesters[i].innerHTML == "Semester of 2014-Fall") {
                semesters[i].innerHTML = "Semester of 2012-Spring";
            }
-       // var chemcourse = document.getElementsByClassName("course").getElementsByClassName("code");
-       // console.log(chemcourse)
-       // console.log(chemcourse[0])
-       // for (var i = 0; i < courses.length; i++) {
-       //    if (courses[i].innerHTML == "CHEM101") {
+       }
+       var codes = $(".code") //Find code for Chem 101
+       for (var i = 0; i < codes.length; i++) {
+           var currentCode = codes[i];
+           if (currentCode.innerHTML == "CHEM101") { //Find parent of Chem 101
+               var currentCode = $(currentCode)
+               var currentCodeParentChildren = $(currentCode.parent().children())
+               for (var i = 0; i < currentCodeParentChildren; i++) { //Find grade.pass of Chem 101 course
+                   var currentChild = currentCodeParentChildren[i];
+                   if (currentChild.innerHTML == "D+") {
+                       currentChild.innerHTML = "B-";
+                       console.log(currentChild.innerHTML)
+                   }
+               }
+           }
        }
     }
 })
