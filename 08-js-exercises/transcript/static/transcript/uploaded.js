@@ -32,6 +32,7 @@ $(document).ready(function() {
        //Ex. 5a, calculate semester averages
        //Define grade dictionary:
        var gradeDict = {
+<<<<<<< HEAD
            'A+': 4.3,
            'A': 4.0,
            'A-': 3.7,
@@ -48,5 +49,21 @@ $(document).ready(function() {
            };
        //Calculate average per semester:
        console.log($(".period").find("td[class*='grade ']")) //selects all grades, need to select grade for each semester only
+=======
+           'A+': 4.33,
+           'A': 4.00,
+           'A-': 3.67,
+           'B+': 3.33,
+           'B': 3.00,
+           'B-': 2.67,
+           'C+': 2.33,
+           'C': 2.00,
+           'C-': 1.67,
+           'D+': 1.33,
+           'D': 1.00,
+           'D-': 0.67,
+           'F': 0.00
+           };
+>>>>>>> 885768290c7913db7fb701948631caee0bc15d98
     }
 })
