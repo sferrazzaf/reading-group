@@ -47,7 +47,8 @@ $(document).ready(function() {
             'F': 0.0
             };
         //Recalculate Averages:
-        //This could have been done in a more logical way had I realized I needed 2 elements from each table row. It works though.
+        //This could have been done in a more logical way had I realized I 
+        //needed 2 elements from each table row. It works though.
         var allSemesters = $(".period");
         var gradeRunningTotal = 0;
         var weightRunningTotal = 0;
@@ -60,23 +61,23 @@ $(document).ready(function() {
                 var currentCourseGradeLetter = currentSemesterGrades[g].innerHTML;
                 var currentCourseGradeNumber = 
                 (gradeDict[currentCourseGradeLetter]);
-                //console.log("currentCourseGradeNumber = " + currentCourseGradeNumber)
                 var currentGradeObject = $(currentSemesterGrades[g]);
-                //Below, How can I just set currentCourseWeight to the innerHTML of the thing I'm trying to select, instead of selecting this object, then picking out the 0th element of all the stuff I found (which is only one object!), then finding its innerHTML? I need a jquery object so I can use .siblings, does that mean I will always wind up with something like this, and have to go back into the object with another line of code to extract some attribute?
+                //Below, How can I just set currentCourseWeight to the 
+                //innerHTML of the thing I'm trying to select, instead of 
+                //selecting this object, then picking out the 0th element of all
+                //the stuff I found (which is only one object!), then finding 
+                //its innerHTML? I need a jquery object so I can use .siblings, 
+                //does that mean I will always wind up with something like this,
+                //and have to go back into the object with another line of code 
+                //to extract some attribute?
                 var someObject =
                 $(currentGradeObject.siblings("td[class*='credits']"));
                 var currentCourseWeight =
                 parseInt(someObject[0].innerHTML, 10);
                 gradeRunningTotal += (currentCourseGradeNumber * currentCourseWeight);
-                //console.log("current course weight = " + currentCourseWeight)
-                //console.log("gradeRunningTotal = " + gradeRunningTotal)
                 weightRunningTotal += currentCourseWeight 
-                //console.log("WeightRunningTotal = " + weightRunningTotal)
                 if (g == currentSemesterGrades.length -2) {
-                    //console.log(gradeRunningTotal)
-                    //console.log(weightRunningTotal)
                     var currentSemesterAverage = gradeRunningTotal / weightRunningTotal;
-                    //console.log("Average = " + currentSemesterAverage) 
                     currentSemesterGrades[g+1].innerHTML = currentSemesterAverage
                     gradeRunningTotal = 0
                     weightRunningTotal = 0
@@ -85,20 +86,13 @@ $(document).ready(function() {
             //Ex. 5b recalculate overall average:
             }
             var allAverages = $(".average").find("td[class*='grade ']") 
-                //console.log(allAverages)
                 for (var a = 0; a < allAverages.length; a++) {
-                    //console.log(allAverages[a].innerHTML)
                     averageRunningTotal += parseFloat(allAverages[a].innerHTML)
-                    //console.log("averageRunningtotal = " + averageRunningTotal)
                     if (a == (allAverages.length -1)) {
                         var finalAverage = 
                         (averageRunningTotal / allAverages.length)
                         var displayedAverage = $(".gpa")
-                        //console.log(displayedAverage[0].innerHTML)
                         displayedAverage[0].innerHTML = ("Overall GPA: " + finalAverage)
-                        //console.log("ART = " + averageRunningTotal)
-                        //console.log("AA.L = " + allAverages.length)
-                       //console.log("Overall GPA: " + finalAverage)
                     }
                 }
             
